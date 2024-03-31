@@ -23,3 +23,10 @@ resource "google_vpc_access_connector" "vpc_connector" {
     name = google_compute_subnetwork.subnet[count.index].name
   }
 }
+
+# Peering from this network to Core Project's VPC
+resource "google_compute_network_peering" "peer_to_core" {
+  name         = "peering-to-core"
+  network      = google_compute_network.vpc_network.self_link
+  peer_network = data.terraform_remote_state.core.outputs.vpc_self_link
+}

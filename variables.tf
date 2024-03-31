@@ -1,3 +1,13 @@
+variable "tfc_organization" {
+  type        = string
+  description = "Terraform Cloud Organization name"
+}
+
+variable "scalable_core_tfc_workspace" {
+  description = "Terraform Cloud workspace name for the core infrastructure"
+  type        = string
+}
+
 variable "gcp_project_id" {
   description = "The ID of the GCP project"
   type        = string
