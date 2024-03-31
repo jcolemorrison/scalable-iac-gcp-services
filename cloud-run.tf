@@ -54,7 +54,6 @@ resource "google_compute_region_network_endpoint_group" "default_serverless_endp
 resource "google_compute_backend_service" "default_service" {
   name                  = "default-service"
   protocol              = "HTTPS"
-  port_name             = "https"
   enable_cdn            = false
   load_balancing_scheme = "EXTERNAL_MANAGED"
 
