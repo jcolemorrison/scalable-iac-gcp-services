@@ -37,14 +37,14 @@ variable "vpc_cidr_block" {
   default     = "10.1.0.0/16"
 }
 
-variable "redis_service_account_id" {
-  description = "value of the redis reader service account id.  It is unique within a project, must be 6-30 characters long, and match the regular expression [a-z]([-a-z0-9]*[a-z0-9]) to comply with RFC1035."
+variable "app_service_account_id" {
+  description = "value of the service account id passed to additional apps and services.  It is unique within a project, must be 6-30 characters long, and match the regular expression [a-z]([-a-z0-9]*[a-z0-9]) to comply with RFC1035."
   type        = string
-  default     = "redis-reader"
+  default     = "app-service"
 }
 
-variable "redis_service_account_display_name" {
-  description = "value of the redis reader service account display name."
+variable "app_service_account_display_name" {
+  description = "value of the service account display name."
   type        = string
-  default     = "Redis Reader service account"
+  default     = "App service account"
 }

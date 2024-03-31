@@ -1,7 +1,7 @@
 # Create a service account used to give access to core project's redis instances
-resource "google_service_account" "redis_reader" {
-  account_id   = var.redis_service_account_id
-  display_name = var.redis_service_account_display_name
+resource "google_service_account" "app_service" {
+  account_id   = var.app_service_account_id
+  display_name = var.app_service_account_display_name
 }
 
 # Create Default Cloud Run service
@@ -35,7 +35,7 @@ resource "google_cloud_run_v2_service" "default" {
       egress    = "ALL_TRAFFIC"
     }
 
-    service_account = google_service_account.redis_reader.email
+    service_account = google_service_account.app_service.email
   }
 }
 

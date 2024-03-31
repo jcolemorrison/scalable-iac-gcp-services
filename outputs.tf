@@ -1,6 +1,6 @@
-output "redis_service_account_email" {
-  description = "The email of the redis reader service account"
-  value       = google_service_account.redis_reader.email
+output "app_service_account_email" {
+  description = "The email of the app service account"
+  value       = google_service_account.app_service.email
 }
 
 output "default_service_backend" {
