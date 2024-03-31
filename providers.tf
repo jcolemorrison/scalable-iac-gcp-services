@@ -21,7 +21,7 @@ data "terraform_remote_state" "core" {
   backend = "remote"
 
   config = {
-    organization = var.terraform_cloud_organization
+    organization = var.tfc_organization
     workspaces = {
       name = var.scalable_core_tfc_workspace
     }
