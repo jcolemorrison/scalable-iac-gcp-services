@@ -4,8 +4,8 @@ output "redis_service_account_email" {
 }
 
 output "default_service_backend" {
-  description = "Self link of the default service backend"
-  value       = google_compute_backend_service.default_service.self_link
+  description = "Map with 'default' as the key and the self link of the default service backend as the value"
+  value       = { "default" = google_compute_backend_service.default_service.self_link }
 }
 
 output "regional_vpc_connector_ids" {
