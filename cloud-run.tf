@@ -42,6 +42,7 @@ resource "google_cloud_run_v2_service" "default" {
 # Create a Network Endpoint Group for each Cloud Run service
 resource "google_compute_region_network_endpoint_group" "default_serverless_endpoints" {
   count  = length(var.deployment_regions)
+  # TODO: remove 2nd part of name
   name   = format("send-%s-%d", var.deployment_regions[count.index], count.index + 1)
   region = var.deployment_regions[count.index]
 
@@ -52,6 +53,7 @@ resource "google_compute_region_network_endpoint_group" "default_serverless_endp
 
 # Create a backend service
 resource "google_compute_backend_service" "default_service" {
+  # TODO: give this a unique name
   name                  = "default-service"
   protocol              = "HTTPS"
   enable_cdn            = false
