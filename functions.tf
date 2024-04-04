@@ -5,7 +5,7 @@ resource "google_storage_bucket" "function_base_template" {
   uniform_bucket_level_access = true
 }
 
-# Create a service account
+# Create a service account - NOTE: you'll need to create a key in the console
 resource "google_service_account" "function_base_template" {
   account_id   = "fn-base-tpl"
   display_name = "Function Base Template Service Account"
