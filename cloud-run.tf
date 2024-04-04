@@ -7,7 +7,7 @@ resource "google_service_account" "app_service" {
 # Create Default Cloud Run service
 resource "google_cloud_run_v2_service" "default" {
   count    = length(var.deployment_regions)
-  name     = format("service-%s-%d", var.deployment_regions[count.index], count.index + 1)
+  name     = format("default-%s", var.deployment_regions[count.index])
   location = var.deployment_regions[count.index]
 
   template {
@@ -41,9 +41,9 @@ resource "google_cloud_run_v2_service" "default" {
 
 # Create a Network Endpoint Group for each Cloud Run service
 resource "google_compute_region_network_endpoint_group" "default_serverless_endpoints" {
-  count  = length(var.deployment_regions)
+  count = length(var.deployment_regions)
   # TODO: remove 2nd part of name
-  name   = format("send-%s-%d", var.deployment_regions[count.index], count.index + 1)
+  name   = format("send-%s", var.deployment_regions[count.index])
   region = var.deployment_regions[count.index]
 
   cloud_run {

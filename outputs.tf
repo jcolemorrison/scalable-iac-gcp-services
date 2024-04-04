@@ -17,3 +17,13 @@ output "vpc_self_link" {
   description = "The self link of the VPC"
   value       = google_compute_network.vpc_network.self_link
 }
+
+output "function_bucket_name" {
+  description = "base function template bucket"
+  value       = google_storage_bucket.function_base_template.name
+}
+
+output "function_service_account_email" {
+  description = "base function template service account email"
+  value       = google_service_account.function_base_template.email
+}
