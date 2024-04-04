@@ -52,20 +52,20 @@ resource "google_compute_region_network_endpoint_group" "default_serverless_endp
 }
 
 # Create a backend service
-resource "google_compute_backend_service" "default_service" {
-  # TODO: give this a unique name
-  name                  = "default-service"
-  protocol              = "HTTPS"
-  enable_cdn            = false
-  load_balancing_scheme = "EXTERNAL_MANAGED"
+# resource "google_compute_backend_service" "default_service" {
+#   # TODO: give this a unique name
+#   name                  = "default-service"
+#   protocol              = "HTTPS"
+#   enable_cdn            = false
+#   load_balancing_scheme = "EXTERNAL_MANAGED"
 
-  dynamic "backend" {
-    for_each = google_compute_region_network_endpoint_group.default_serverless_endpoints
-    content {
-      group = backend.value.id
-    }
-  }
-}
+#   dynamic "backend" {
+#     for_each = google_compute_region_network_endpoint_group.default_serverless_endpoints
+#     content {
+#       group = backend.value.id
+#     }
+#   }
+# }
 
 
 # Create a URL map
